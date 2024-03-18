@@ -1,0 +1,49 @@
+import 'dart:io';
+
+class Car {
+  final String model;
+  final String type;
+  final String bodyType;
+
+  Car(this.model, this.type, this.bodyType);
+}
+
+class CarDatabase {
+  List<Car> cars = [
+    Car('LandRover Defender 2017', 'Diesel', 'Jeppa'),
+    Car('Landrover Disovery 2020', 'Rafmagns', 'Jeppa'),
+    Car('Polestar 1 2023', 'Rafmagns', 'Folksbill'),
+    Car('Polestar 2 2019', 'Rafmagns', 'Folksbill'),
+    Car('Jaguar Fpace 2018', 'Diesel', 'Folksbill'),
+    Car('Jaguar Epace 2016', 'Diesel', 'Jeppa'),
+    Car('Subaru Legazy 2021', 'Rafmagns', 'Sedan'),
+    Car('Subaru Impreza 2022', 'Diesel', 'Sedan'),
+
+  ];
+
+  List<Car> searchCars({String? type, String? bodyType}) {
+    return cars.where((car) {
+      if (type != null && !car.type.toLowerCase().contains(type.toLowerCase())) return false;
+      if (bodyType != null && !car.bodyType.toLowerCase().contains(bodyType.toLowerCase())) return false;
+      return true;
+    }).toList();
+  }
+}
+
+void main() {
+  var database = CarDatabase();
+
+  stdout.write('Velkomin á Bílasölu Stuðfinns \nHvað heillar mest? \nRafmagns eða Diesel? \nSkrifaðu: ');
+  var type = stdin.readLineSync();
+
+  stdout.write('Vel valið! \nErtu að hugsa um folksbil eða jeppa?: ');
+  var bodyType = stdin.readLineSync();
+
+  print('\nLeitar að $type $bodyType bílum:');
+  var searchResults = database.searchCars(type: type, bodyType: bodyType);
+  if (searchResults.isEmpty) {
+    print('Fann enga bíla með þínum leitarskilirðum.');
+  } else {
+    searchResults.forEach((car) => print(car.model));
+  }
+}
