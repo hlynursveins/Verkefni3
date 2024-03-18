@@ -16,8 +16,8 @@ class CarDatabase {
     Car('Polestar 2 2019', 'Rafmagns', 'Folksbill'),
     Car('Jaguar Fpace 2018', 'Diesel', 'Folksbill'),
     Car('Jaguar Epace 2016', 'Diesel', 'Jeppa'),
-    Car('Subaru Legazy 2021', 'Rafmagns', 'Sedan'),
-    Car('Subaru Impreza 2022', 'Diesel', 'Sedan'),
+    Car('Subaru Legazy 2021', 'Rafmagns', Folksbill'),
+    Car('Subaru Impreza 2022', 'Diesel', 'Folksbill'),
 
   ];
 
